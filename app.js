@@ -9,7 +9,7 @@ const io = new Server(server);
 
 const port = 3000;
 
-const rooms = {};
+const rooms = [];
 
 const users = {
   online: {},
@@ -27,6 +27,9 @@ app.get('/create', (req, res) => {
   res.sendFile(__dirname + '/public/create.html');
 });
 
+app.get('/room/:id', (req, res) => {
+  res.sendFile(__dirname + '/public/room.html');
+});
 
 io.on('connection', (socket) => {
   console.log('user connected');
@@ -55,11 +58,12 @@ io.on('connection', (socket) => {
   });
 
   socket.on('newRoom', (room) => {
-    rooms[room.name] = {
+    rooms.push({
+      name: room.name,
       owner: socket.id,
       createdAt: new Date(),
       game: room.game,
-    };
+    });
 
     console.log(rooms);
     io.emit('updateRooms', rooms);

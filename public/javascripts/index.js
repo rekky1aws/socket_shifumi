@@ -14,10 +14,11 @@ let lclRooms = {};
 // MAIN
 socket.on('updateRooms', (rooms) => {
   roomContainer.innerHTML = "";
-  Object.keys(rooms).forEach( (room) => {
-    const roomElt = document.createElement('div');
+  for(let i = 0; i < rooms.length; i++) {
+    const roomElt = document.createElement('a');
     roomElt.classList.add('room');
-    roomElt.textContent = room;
+    roomElt.href = `/room/${i}`
+    roomElt.textContent = rooms[i].name;
     roomContainer.append(roomElt);
-  });
+  }
 });
