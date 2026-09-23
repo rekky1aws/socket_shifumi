@@ -69,7 +69,7 @@ io.on('connection', (socket) => {
       players: [socket.id]
     });
 
-    console.log(rooms);
+    console.log(rooms); // DEBUG
     io.emit('updateRooms', rooms);
   });
 });
