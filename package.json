@@ -1,0 +1,18 @@
+{
+  "name": "test_shifumi",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "rekky1aws",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14",
+    "socket.io": "^4.8.3"
+  }
+}
