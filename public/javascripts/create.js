@@ -6,6 +6,7 @@ const newRoomBtn = document.querySelector('#new-room-btn');
 const roomNameInput = document.querySelector('#room-name');
 
 // VARIABLES
+let room = {};
 
 // FUNCTIONS
 function createRoom (evt) {
@@ -13,7 +14,7 @@ function createRoom (evt) {
     throw new Error("Room Name can't be empty");
   }
 
-  const room = {
+  room = {
     name: `${roomNameInput.value}`,
     game: "shifumi",
   }
@@ -23,11 +24,20 @@ function createRoom (evt) {
   } catch (err) {
     console.error(err);
   }
-
-  document.location.href="/";
 }
 
 // EVENT LISTENERS
 newRoomBtn.addEventListener('click', createRoom);
 
 // MAIN
+socket.on('updateRooms', (rooms) => {
+  if (!room) {
+    return false;
+  }
+
+  for(let i=0; i<rooms.length; i++) {
+    if (rooms[i].name == room.name) {
+      document.location.href=`/room/${i}`;
+    }
+  }
+});
