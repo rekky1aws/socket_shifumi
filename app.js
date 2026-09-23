@@ -9,9 +9,7 @@ const io = new Server(server);
 
 const port = 3000;
 
-const rooms = {
-
-};
+const rooms = {};
 
 const users = {
   online: {},
@@ -34,6 +32,7 @@ io.on('connection', (socket) => {
   console.log('user connected');
 
   socket.emit('updateUsers', users); // Emit to only the person who just connected
+  socket.emit('updateRooms', rooms); // Emit to only the person who just connected
 
   // Listening to events emitted by clients
   socket.on('newUser', (username) => {
@@ -54,8 +53,19 @@ io.on('connection', (socket) => {
     
     io.emit('updateUsers', users);
   });
+
+  socket.on('newRoom', (room) => {
+    rooms[room.name] = {
+      owner: socket.id,
+      createdAt: new Date(),
+      game: room.game,
+    };
+
+    console.log(rooms);
+    io.emit('updateRooms', rooms);
+  });
 });
 
 server.listen(port, () => {
-  console.log(`Example app running on port : ${port}`); // DEBUG
+  console.log(`Shifumi app running on port : ${port}`); // DEBUG
 });
