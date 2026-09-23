@@ -28,6 +28,9 @@ app.get('/create', (req, res) => {
 });
 
 app.get('/room/:id', (req, res) => {
+  if(!rooms[req.params.id]) {
+    return res.redirect('/');
+  }
   res.sendFile(__dirname + '/public/room.html');
 });
 
@@ -63,6 +66,7 @@ io.on('connection', (socket) => {
       owner: socket.id,
       createdAt: new Date(),
       game: room.game,
+      players: [socket.id]
     });
 
     console.log(rooms);
