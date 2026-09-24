@@ -10,6 +10,7 @@ const io = new Server(server);
 const port = 3000;
 
 let rooms = [];
+// Fixture Data
 rooms = [
   {
     name: 'test',
