@@ -9,7 +9,25 @@ const io = new Server(server);
 
 const port = 3000;
 
-const rooms = [];
+let rooms = [];
+rooms = [
+  {
+    name: 'test',
+    owner: 'x8qjgxaiMyr--_tbAAAE',
+    createdAt: new Date(),
+    game: 'shifumi',
+    players: [ 'x8qjgxaiMyr--_tbAAAE', '_FywN_5NkTReEUHTAAAF' ],
+    maxPlayer: 2,
+  },
+  {
+    name: 'test2',
+    owner: '_FywN_5NkTReEUHTAAAF',
+    createdAt: new Date(),
+    game: 'shifumi',
+    players: ['_FywN_5NkTReEUHTAAAF' ],
+    maxPlayer: 2,
+  }
+];
 
 const users = {
   online: {},
@@ -66,7 +84,8 @@ io.on('connection', (socket) => {
       owner: socket.id,
       createdAt: new Date(),
       game: room.game,
-      players: [socket.id]
+      players: [socket.id],
+      maxPlayer: room.maxPlayer
     });
 
     console.log(rooms); // DEBUG

@@ -17,6 +17,7 @@ function createRoom (evt) {
   room = {
     name: `${roomNameInput.value}`,
     game: "shifumi",
+    maxPlayers: 2,
   }
 
   try {

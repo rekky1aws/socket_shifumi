@@ -29,7 +29,13 @@ socket.on('updateRooms', (rooms) => {
     roomGameElt.textContent = rooms[i].game;
 
     roomElt.classList.add('room');
-    roomElt.href = `/room/${i}`
+    
+    // Disable room link if there is no more player slot available
+    if (rooms[i].players.length >= rooms[i].maxPlayer) {
+      roomElt.href = `#`;
+    } else {
+      roomElt.href = `/room/${i}`
+    }
     roomNameElt.textContent = rooms[i].name;
 
     roomElt.append(roomNameElt, roomGameElt, roomPlayersContainer);
