@@ -12,4 +12,7 @@
 
 ## Backend
 + Room class
+ + Shifumi class
 + User class
+ + Enter Username
+ + Connection
