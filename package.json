@@ -4,7 +4,9 @@
   "description": "Trying to make an app to play shifumi (rock, paper, scissors) online using ExpressJS with Socket.io",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx src/app.ts",
+    "compile": "tsc"
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,7 @@
     "@types/socket.io": "^3.0.1",
     "nodemon": "^3.1.14",
     "ts-node": "^10.9.2",
+    "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }
 }
