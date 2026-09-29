@@ -1,18 +1,28 @@
 {
-  "name": "test_shifumi",
+  "name": "socket_shifumi",
   "version": "1.0.0",
-  "description": "",
+  "description": "Trying to make an app to play shifumi (rock, paper, scissors) online using ExpressJS with Socket.io",
+  "homepage": "https://github.com/rekky1aws/socket_shifumi#readme",
+  "bugs": {
+    "url": "https://github.com/rekky1aws/socket_shifumi/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rekky1aws/socket_shifumi.git"
+  },
   "license": "ISC",
   "author": "rekky1aws",
   "type": "commonjs",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
-    "dev": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx nodemon src/app.js"
   },
   "dependencies": {
+    "dotenv": "^18.0.4",
     "express": "^5.2.1",
     "nodemon": "^3.1.14",
-    "socket.io": "^4.8.3"
+    "socket.io": "^4.8.4",
+    "twig": "^3.0.0"
   }
 }
